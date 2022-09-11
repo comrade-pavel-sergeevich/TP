@@ -6,6 +6,7 @@
 <script type = "text/javascript" language="javascript" src="script.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
+<Title> TP </Title>
 </head>
 
 <body onload="checkHash();">

@@ -63,7 +63,7 @@
 			exit();
 		}
 		$row = $stmt->fetch(PDO::FETCH_LAZY);
-		return $row->fullname;
+		return $row->name;
 	}
 	
 	

@@ -1,7 +1,7 @@
 <?php
 $serverName = "localhost";
-$dBUsername = "root";
-$dBPassword = "";
+$dBUsername = "admin";
+$dBPassword = "1234";
 $dBName = "tp";
 
 // $dsn = "mysql:host=$serverName;dbname=$dBName;charset=utf8";

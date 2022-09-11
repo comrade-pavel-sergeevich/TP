@@ -19,7 +19,7 @@ const checkHash = () => {
 		if(data !== '')
 	{
 		document.getElementById("reg").outerHTML="<li class=\"menu-item\" id=\"reg\" onclick=\"logout();\">LogOut</li>";		
-		document.getElementById("home").outerHTML="<li class=\"menu-item\" id=\"home\" onclick=\"makeRequest('do.php');\">Todo</li>";
+		document.getElementById("home").outerHTML="<li class=\"menu-item\" id=\"home\" onclick=\"makeRequest('do.php');\">TP</li>";
 		document.getElementById("log").outerHTML="<li class=\"menu-item\" id=\"log\">Heil, "+data+"</li>";
 		if(url!="logout"){
 			window.location.hash="do";
@@ -54,13 +54,13 @@ function logout(){
 	checkHash();
 }
 function login(){
-	let email=document.getElementById('email').value;
+	let name=document.getElementById('email').value;
 	let pwd = document.getElementById('pwd').value;
-	if(email==""|pwd==""){document.getElementById('error').innerHTML='<span style = "color:red">Заполните поля</span>';return;}
+	if(name==""|pwd==""){document.getElementById('error').innerHTML='<span style = "color:red">Заполните поля</span>';return;}
 	$.ajax({
 	type: 'Get',
 	url: 'includes/loginnew.inc.php',
-	data: {email: email,pwd: pwd},
+	data: {name: name,pwd: pwd},
 	dataType: 'text'	
 	}).done(function(data){
 		if(data=="ok"){

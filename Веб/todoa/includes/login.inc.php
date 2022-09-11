@@ -16,7 +16,7 @@
 		{
 			session_start();
 			//$_SESSION['user_email'] = $email;
-			$_SESSION['user_name'] = getname($pdo,$email);
+			$_SESSION['user_name'] = $email;
 			session_write_close();
 			header('location: ../index.php');			
 		}

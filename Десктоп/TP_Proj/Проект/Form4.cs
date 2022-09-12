@@ -1,0 +1,191 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Проект
+{
+    public partial class Form4 : Form
+    {
+        Connect conn = new Connect();
+        public Form4()
+        {
+            InitializeComponent();
+            textBox1.Text = "Имя пользователя";
+            textBox2.Text = "Почта";
+            textBox3.Text = "Пароль";
+            textBox4.Text = "Повторите пароль";
+            textBox1.ForeColor = Color.Orange;
+            textBox2.ForeColor = Color.Orange;
+            textBox3.ForeColor = Color.Orange;
+            textBox4.ForeColor = Color.Orange;
+            this.textBox3.AutoSize = false;
+            this.textBox3.Size = new Size(this.textBox3.Size.Width, 55);
+            this.textBox4.AutoSize = false;
+            this.textBox4.Size = new Size(this.textBox4.Size.Width, 55);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 fr2 = new Form2();
+            fr2.Show();
+            Hide();
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Имя пользователя")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Имя пользователя";
+                textBox1.ForeColor = Color.Orange;
+            }
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Почта")
+            {
+                textBox2.Text = "";
+                textBox2.ForeColor = Color.Black;
+            }
+
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.Text = "Почта";
+                textBox2.ForeColor = Color.Orange;
+            }
+        }
+
+        private void textBox3_Enter(object sender, EventArgs e)
+        {
+
+            if (textBox3.Text == "Пароль")
+            {
+                textBox3.Text = "";
+                textBox3.ForeColor = Color.Black;
+                textBox3.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "")
+            {
+                textBox3.Text = "Пароль";
+                textBox3.ForeColor = Color.Orange;
+                textBox3.UseSystemPasswordChar = false;
+            }
+        }
+
+        private void textBox4_Enter(object sender, EventArgs e)
+        {
+            if (textBox4.Text == "Повторите пароль")
+            {
+                textBox4.Text = "";
+                textBox4.ForeColor = Color.Black;
+                textBox4.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
+            if (textBox4.Text == "")
+            {
+                textBox4.Text = "Повторите пароль";
+                textBox4.ForeColor = Color.Orange;
+                textBox4.UseSystemPasswordChar = false;
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox3.Text != textBox4.Text) { MessageBox.Show("different passwords"); return; }
+            if (conn.Regist(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text))
+            {
+                Form5 fr5 = new Form5();
+                fr5.Show();
+                Hide();
+
+                MessageBox.Show("registr successful");
+            }
+            else
+            {
+                MessageBox.Show("user already exists");
+            }
+
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            
+        }
+    }
+}

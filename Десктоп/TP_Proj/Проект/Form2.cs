@@ -10,41 +10,34 @@ using System.Windows.Forms;
 
 namespace Проект
 {
-    public partial class Form2 : Form
+    internal partial class Form2 : Form
     {
-        public Form2()
+        Program program;
+        public Form2(Program program)
         {
             InitializeComponent();
-
+            this.program = program;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form3 fr3 = new Form3();
-            fr3.Show();
+            //Form3 fr3 = new Form3(this);
+            //fr3.Show();
+            program.GetData(new object[] { "login" });
             Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form4 fr4 = new Form4();
-            fr4.Show();
+            //Form4 fr4 = new Form4(this);
+            //fr4.Show();
+            program.GetData(new object[] { "register" });
             Hide();
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

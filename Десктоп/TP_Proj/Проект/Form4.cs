@@ -13,7 +13,8 @@ namespace Проект
     public partial class Form4 : Form
     {
         Connect conn = new Connect();
-        public Form4()
+        Program program;
+        internal Form4(Program program)
         {
             InitializeComponent();
             textBox1.Text = "Имя пользователя";
@@ -24,16 +25,17 @@ namespace Проект
             textBox2.ForeColor = Color.Orange;
             textBox3.ForeColor = Color.Orange;
             textBox4.ForeColor = Color.Orange;
-            this.textBox3.AutoSize = false;
-            this.textBox3.Size = new Size(this.textBox3.Size.Width, 55);
-            this.textBox4.AutoSize = false;
-            this.textBox4.Size = new Size(this.textBox4.Size.Width, 55);
+            textBox3.AutoSize = false;
+            textBox3.Size = new Size(textBox3.Size.Width, 55);
+            textBox4.AutoSize = false;
+            textBox4.Size = new Size(textBox4.Size.Width, 55);
+            this.program = program;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form2 fr2 = new Form2();
-            fr2.Show();
+            //Form2 fr2 = new Form2();
+            //fr2.Show();
             Hide();
         }
 
@@ -120,72 +122,31 @@ namespace Проект
             Application.Exit();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form4_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox3.Text != textBox4.Text) { MessageBox.Show("different passwords"); return; }
-            if (conn.Regist(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text))
-            {
-                Form5 fr5 = new Form5();
-                fr5.Show();
-                Hide();
+            //if (conn.Regist(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text))
+            //{
+            //    Form5 fr5 = new Form5();
+            //    fr5.Show();
+            //    Hide();
 
-                MessageBox.Show("registr successful");
-            }
-            else
-            {
-                MessageBox.Show("user already exists");
-            }
-
+            //    MessageBox.Show("registr successful");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("user already exists");
+            //}
+            program.GetData(new object[] { textBox1.Text, textBox2.Text, textBox3.Text });
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
             
+        }
+        public void RegisterComplete()
+        {
+            Application.Exit();
         }
     }
 }

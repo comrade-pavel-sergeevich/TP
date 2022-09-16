@@ -12,8 +12,6 @@ namespace Проект
     {
         static string connStr = "Server=127.0.0.1; UserId=root; Database=тп; Port=3306;";
         static MySqlConnection conn = new MySqlConnection(connStr);
-
-
         public bool Regist(string name, string mail, string password, string password2)
         {
             conn.Open();
@@ -23,8 +21,8 @@ namespace Проект
             MySqlCommand command = new MySqlCommand(sql, conn); //делаем запрос
             MySqlCommand command_add = new MySqlCommand(add_sql, conn);
 
-            var check = command.ExecuteScalar(); //получили ник из запроса    (здесь я пососал) 
-            string res_name;
+            var check = command.ExecuteScalar(); //получили ник из запроса 
+            //string res_name;
 
             if (check != null)
                 return false;

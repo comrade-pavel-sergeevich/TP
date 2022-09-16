@@ -1,0 +1,12 @@
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.Form1.resources
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.Form2.resources
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.Form3.resources
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.Form4.resources
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.Form5.resources
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.Properties.Resources.resources
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.csproj.GenerateResource.cache
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.AssemblyInfo.cs
+C:\Users\ADMIN\Desktop\ТП\TP\Десктоп\TP_Proj\Проект\obj\Debug\netcoreapp3.0\Проект.csproj.CoreCompileInputs.cache

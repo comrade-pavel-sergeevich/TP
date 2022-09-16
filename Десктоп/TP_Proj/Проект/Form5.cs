@@ -24,8 +24,8 @@ namespace Проект
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 fr2 = new Form2();
-            fr2.Show();
+            //Form2 fr2 = new Form2();
+            //fr2.Show();
             Hide();
         }
     }

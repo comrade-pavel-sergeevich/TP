@@ -9,6 +9,7 @@ namespace Проект
     internal class UserInterfaceManager
     {
         UserInterfaceFunctions pr;
+        UserManager um = new UserManager();
         public UserInterfaceManager(UserInterfaceFunctions pr)
         {
             this.pr = pr;
@@ -26,6 +27,9 @@ namespace Проект
                     case "login":
                         {
                             data=pr.Login();
+                            
+                            um.Login((string)data[0], (string) data[1]);
+     
                             //проверяем через БД, вызываем WrongPass или LoginComplete
                             deistvie = pr.GetDeistvie();
                             break;
@@ -33,6 +37,7 @@ namespace Проект
                     case "register":
                         {
                             data = pr.Register();
+                            um.Register((string)data[0], (string)data[1], (string)data[2]);
                             //отправляем данные в БД
                             pr.RegisterComplete();
                             deistvie = "login";

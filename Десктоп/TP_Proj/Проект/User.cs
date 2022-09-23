@@ -7,13 +7,9 @@ using System.Xml.Linq;
 
 namespace Проект
 {
-    internal class User
-    {
-    }
     struct UserInf
     {
         public string name;
-        public string password;
         public string dop_info;
     }
 }

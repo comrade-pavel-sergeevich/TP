@@ -11,22 +11,32 @@ namespace Проект
     internal class UserManager
     {
         UserInf user = new UserInf();
+        //InterfaceDB bd = new InterfaceDB();
 
+       public bool Login(string login, string pass)
+       {
+            //string sql = $"SELECT name FROM users WHERE login = "+login;
+            /*if (bd.checkUser(login))
+            {
+                return true;
+            }
+            else*/
+                return false;
+            
+       }
 
-        public void Login(string login, string pass)
+        public bool Register(string name, string login, string pass)
         {
-            string sql = $"SELECT name FROM users WHERE login = "+login;
-            //bdchec();   отправка данных на проверку в БД
-            user.password = pass;
+            //string sql = "INSERT INTO users (name,login,pass) VALUES ("+name+","+login+","+pass+");";
+            /*if (bd.createUser(name, login, pass))
+            {
+                user.name = name;
+                return true;
+            }
+            else*/
+                return false;
 
-        }
-
-        public void Register(string name, string login, string pass)
-        {
-            string sql = "INSERT INTO users (name,login,pass) VALUES ("+name+","+login+","+pass+");";
-            //bdcreate();     отправка данных для регистрации данных в БД 
-            user.name = name;
-            user.password = pass;
+            
 
 
         }

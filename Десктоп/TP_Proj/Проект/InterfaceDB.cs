@@ -14,7 +14,7 @@ namespace Проект
 
         bool checkUser(string login);
 
-        User[] getAllUsers();         
+       // User[] getAllUsers();         
         
         //когда будет такой класс
 

@@ -6,31 +6,67 @@ using System.Threading.Tasks;
 
 namespace Проект
 {
-    internal class Consolnoe:UserInterfaceFunctions
+    internal class Consolnoe : UserInterfaceFunctions
     {
         public void Hello()
         {
             Console.WriteLine("Вы запустили...");
         }
-        public object[] Login ()
+        public object[] Login()
         {
-            Console.Write("Введите логин: ");
-            string login = Console.ReadLine();
-            Console.Write("Введите пароль: ");
-            string pass = Console.ReadLine();
-            return new object[] { login,pass};
+            string login;
+            do
+            {
+                Console.Write("Введите логин: ");
+                login = Console.ReadLine();
+            }
+            while (login.Length < 1);
+            string pass;
+            do
+            {
+                Console.Write("Введите пароль: ");
+                pass = Console.ReadLine();
+            }
+            while (pass.Length < 1);
+            return new object[] { login, pass };
         }
         public object[] Register()
         {
-            Console.Write("Введите логин: ");
-            string login = Console.ReadLine();
-            Console.Write("Введите почту: ");
-            string mail = Console.ReadLine();
-            Console.Write("Введите пароль: ");
-            string pass = Console.ReadLine();
-            Console.Write("Введите пароль ещё раз: ");
-            string pass2 = Console.ReadLine();
-            return new object[] { login,mail,pass };
+            string login;
+            do
+            {
+                Console.Write("Введите логин: ");
+                login = Console.ReadLine();
+            } while (login.Length < 1);
+            string mail;
+            do
+            {
+                Console.Write("Введите почту: ");
+                mail = Console.ReadLine();
+            } while (mail.Length < 1);
+
+            string pass;
+            string pass2;
+            for (; ; )
+            {
+                do
+                {
+                    Console.Write("Введите пароль: ");
+                    pass = Console.ReadLine();
+                }
+                while (pass.Length < 1);
+
+
+                do
+                {
+                    Console.Write("Введите пароль ещё раз: ");
+                    pass2 = Console.ReadLine();
+                } while (pass2.Length < 1);
+                if (pass != pass2) { Console.WriteLine("Пароли не совпадают, попробуйте ещё раз "); continue; }
+                break;
+            }
+
+            return new object[] { login, mail, pass };
         }
         public string GetDeistvie()
         {

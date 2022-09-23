@@ -52,7 +52,7 @@
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(356, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(263, 52);
+            //this.label1.Size = new System.Drawing.Size(263, 52);
             this.label1.TabIndex = 0;
             this.label1.Text = "Авторизация";
             // 
@@ -63,7 +63,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(500, 64);
-            this.textBox1.TabIndex = 1;;
+            this.textBox1.TabIndex = 1;
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
@@ -74,7 +74,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(500, 61);
             this.textBox2.TabIndex = 1;
-            this.textBox2.UseSystemPasswordChar = true;;
+            this.textBox2.UseSystemPasswordChar = true;
             this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
             this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 

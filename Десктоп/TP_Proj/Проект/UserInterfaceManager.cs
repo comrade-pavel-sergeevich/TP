@@ -17,9 +17,8 @@ namespace Проект
         }
         void Start()
         {
-            pr.Hello();
-            pr.Vhod();
-            string deistvie = pr.GetDeistvie();
+            pr.Hello();           
+            string deistvie = "vhod";
             string cur_deistvie = "vhod";
             object[] data;
             while (deistvie != "exit")
@@ -28,7 +27,8 @@ namespace Проект
                 {
                     case "login":
                         {
-                            data=pr.Login();
+                            cur_deistvie = "login";
+                            data =pr.Login();
                             if (data[0] is string)
                             {
                                 if ((string)data[0] == "exit")
@@ -40,6 +40,7 @@ namespace Проект
                                     deistvie = pr.Back(cur_deistvie); break;
                                 }
                             }
+                            Console.WriteLine("Отправлено для входа");
                             um.Login((string)data[0], (string) data[1]);
      
                             //проверяем через БД, вызываем WrongPass или LoginComplete
@@ -48,6 +49,7 @@ namespace Проект
                         }
                     case "register":
                         {
+                            cur_deistvie = "register";
                             data = pr.Register();
                             if (data[0] is string)
                             {
@@ -72,6 +74,12 @@ namespace Проект
                         {                      
                             deistvie = pr.Back(cur_deistvie);
                             cur_deistvie = deistvie;
+                            break;
+                        }
+                    case "vhod":
+                        {
+                            pr.Vhod();
+                            deistvie = pr.GetDeistvie();
                             break;
                         }
                     default:

@@ -15,40 +15,51 @@ namespace Проект
         }
         public object[] Login()
         {
+            cur_deistvie = "login";
             string login;
-            do
-            {
-                Console.Write("Введите логин: ");
-                login = Console.ReadLine();
-            }
-            while (login.Length < 1);
             string pass;
-            do
+            for (; ; )
             {
-                Console.Write("Введите пароль: ");
-                pass = Console.ReadLine();
+                do
+                {
+                    WriteAboutBack();
+                    Console.Write("Введите логин: ");
+                    login = Console.ReadLine();
+                }
+                while (login.Length < 1);
+                if (login == "back") { return new object[] { "back" }; }
+                do
+                {
+                    Console.Write("Введите пароль: ");
+                    pass = Console.ReadLine();
+                }
+                while (pass.Length < 1);
+                if (pass == "back") continue;
+                break;
             }
-            while (pass.Length < 1);
             return new object[] { login, pass };
         }
         public object[] Register()
         {
-            string login=null;
-            string mail =null;
-            string pass =null;
-            string pass2=null;
+            cur_deistvie = "register";
+            string login = null;
+            string mail = null;
+            string pass = null;
+            string pass2 = null;
             int step = 0;
-            while (true) {
+            while (true)
+            {
                 switch (step)
                 {
                     case 0:
                         {
                             do
                             {
+                                WriteAboutBack();
                                 Console.Write("Введите логин: ");
                                 login = Console.ReadLine();
                             } while (login.Length < 1);
-                            if (login == "back") { return new object[] {"back" }; }
+                            if (login == "back") { return new object[] { "back" }; }
                             goto case 1;
                         }
                     case 1:
@@ -72,7 +83,6 @@ namespace Проект
                                 }
                                 while (pass.Length < 1);
                                 if (pass == "back") { goto case 1; }
-
                                 do
                                 {
                                     Console.Write("Введите пароль ещё раз: ");
@@ -86,8 +96,7 @@ namespace Проект
                         }
                 }
                 break;
-                }
-
+            }
             return new object[] { login, mail, pass };
         }
         public void Vhod()
@@ -124,6 +133,10 @@ namespace Проект
         {
             Console.WriteLine("До свидания. Для выхода нажмите любую клавишу");
             Console.ReadKey();
+        }
+        void WriteAboutBack()
+        {
+            Console.WriteLine("Для отмены ввода или возрата в предыдущее меню введите\"back\"");
         }
     }
 }

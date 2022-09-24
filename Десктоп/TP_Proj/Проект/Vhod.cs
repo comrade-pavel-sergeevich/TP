@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Проект
 {
-    internal partial class Form2 : Form
+    internal partial class Vhod : Form
     {
         Program program;
-        public Form2(Program program)
+        public Vhod(Program program)
         {
             InitializeComponent();
             this.program = program;
@@ -21,24 +21,25 @@ namespace Проект
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Form3 fr3 = new Form3(this);
-            //fr3.Show();
             program.GetData(new object[] { "login" });
-            Hide();
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Form4 fr4 = new Form4(this);
-            //fr4.Show();
             program.GetData(new object[] { "register" });
-            Hide();
+            Close();
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
             program.GetData(new object[] {"exit" });
             Application.Exit();
+        }
+
+        private void Vhod_Load(object sender, EventArgs e)
+        {
+            Activate();
         }
     }
 }

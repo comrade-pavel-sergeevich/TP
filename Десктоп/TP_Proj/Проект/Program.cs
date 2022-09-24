@@ -57,14 +57,20 @@ namespace Проект
         public void Hello()
         {
             ApplicationConfiguration.Initialize();
-            Thread t = new Thread(() => Application.Run(new Privetstvie(this)));
+            //Thread t = new Thread(() => Application.Run(new Hello(this)));
+            //t.Start();
+            Application.Run(new Hello());
+            ;
+        }
+        public void Vhod() {
+            forms.Insert(0, new Vhod(this));
+            Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
             t.Start();
         }
-        public void Vhod() { }
 
         public object[] Login()
         {
-            forms.Insert(0, new Form3(this));
+            forms.Insert(0, new Login(this));
             Thread t = new Thread(() => { Application.Run(forms[0]);forms.RemoveAt(0); }) ;
             t.Start();
             bufer = null;
@@ -73,7 +79,7 @@ namespace Проект
         }
         public object[] Register()
         {
-            forms.Insert(0, new Form4(this));
+            forms.Insert(0, new Register(this));
             Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
             t.Start();
             bufer = null;
@@ -92,7 +98,7 @@ namespace Проект
         }
         public void RegisterComplete()
         {
-            (forms[0] as Form4).RegisterComplete();
+            (forms[0] as Register).RegisterComplete();
             //Console.WriteLine("Вы успешно зарегистрировались");
         }
         public void Exit() { }

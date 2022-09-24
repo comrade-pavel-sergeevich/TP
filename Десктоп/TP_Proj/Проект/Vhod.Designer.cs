@@ -1,6 +1,6 @@
 ﻿namespace Проект
 {
-    partial class Form2
+    partial class Vhod
     {
         /// <summary>
         /// Required designer variable.
@@ -144,7 +144,7 @@
             this.panel2.Size = new System.Drawing.Size(1194, 111);
             this.panel2.TabIndex = 10;
             // 
-            // Form2
+            // Vhod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -157,9 +157,10 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Form2";
+            this.Name = "Vhod";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Vhod_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

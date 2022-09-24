@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Проект
 {
-    public partial class Form4 : Form
+    public partial class Register : Form
     {
         Connect conn = new Connect();
         Program program;
-        internal Form4(Program program)
+        internal Register(Program program)
         {
             InitializeComponent();
             textBox1.Text = "Имя пользователя";
@@ -34,9 +34,8 @@ namespace Проект
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Form2 fr2 = new Form2();
-            //fr2.Show();
-            Hide();
+            program.GetData(new object[] { "back" });
+            Close();
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
@@ -64,7 +63,6 @@ namespace Проект
                 textBox2.Text = "";
                 textBox2.ForeColor = Color.Black;
             }
-
         }
 
         private void textBox2_Leave(object sender, EventArgs e)
@@ -75,10 +73,8 @@ namespace Проект
                 textBox2.ForeColor = Color.Orange;
             }
         }
-
         private void textBox3_Enter(object sender, EventArgs e)
         {
-
             if (textBox3.Text == "Пароль")
             {
                 textBox3.Text = "";
@@ -86,7 +82,6 @@ namespace Проект
                 textBox3.UseSystemPasswordChar = true;
             }
         }
-
         private void textBox3_Leave(object sender, EventArgs e)
         {
             if (textBox3.Text == "")
@@ -96,7 +91,6 @@ namespace Проект
                 textBox3.UseSystemPasswordChar = false;
             }
         }
-
         private void textBox4_Enter(object sender, EventArgs e)
         {
             if (textBox4.Text == "Повторите пароль")
@@ -106,7 +100,6 @@ namespace Проект
                 textBox4.UseSystemPasswordChar = true;
             }
         }
-
         private void textBox4_Leave(object sender, EventArgs e)
         {
             if (textBox4.Text == "")
@@ -142,8 +135,7 @@ namespace Проект
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
-            textBox4.Clear();
-            
+            textBox4.Clear();            
         }
         public void RegisterComplete()
         {

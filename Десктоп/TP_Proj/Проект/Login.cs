@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Проект
 {
-    public partial class Form3 : Form
+    public partial class Login : Form
     {
         Program program;
         Connect conn = new Connect();
-        internal Form3(Program program)
+        internal Login(Program program)
         {
             this.program = program;
             InitializeComponent();
@@ -23,14 +23,15 @@ namespace Проект
             textBox1.ForeColor = Color.Orange;
             textBox2.ForeColor = Color.Orange;
             this.textBox2.AutoSize = false;
-            this.textBox2.Size = new Size(this.textBox2.Size.Width, 64); 
+            this.textBox2.Size = new Size(this.textBox2.Size.Width, 64);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             //Form2 fr2 = new Form2(this);
             //fr2.Show();
-            Hide();
+            //Hide();
+            program.GetData(new object[] { "back" });
+            Close();
         }
    
 
@@ -100,6 +101,11 @@ namespace Проект
             program.GetData(new object[] { textBox1.Text, textBox2.Text });
             textBox1.Clear();
             textBox2.Clear();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            textBox1.Focus();
         }
     }
 }

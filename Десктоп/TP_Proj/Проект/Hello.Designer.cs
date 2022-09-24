@@ -1,6 +1,6 @@
 ﻿namespace Проект
 {
-    partial class Privetstvie
+    partial class Hello
     {
         /// <summary>
         ///  Required designer variable.

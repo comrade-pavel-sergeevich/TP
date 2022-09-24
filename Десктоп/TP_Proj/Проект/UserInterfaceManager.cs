@@ -29,9 +29,16 @@ namespace Проект
                     case "login":
                         {
                             data=pr.Login();
-                            if (data[0] is string && (string)data[0] == "exit")
+                            if (data[0] is string)
                             {
-                                deistvie = "exit"; break;
+                                if ((string)data[0] == "exit")
+                                {
+                                    deistvie = "exit"; break;
+                                }
+                                if ((string)data[0] == "back")
+                                {
+                                    deistvie = pr.Back(cur_deistvie); break;
+                                }
                             }
                             um.Login((string)data[0], (string) data[1]);
      
@@ -42,11 +49,18 @@ namespace Проект
                     case "register":
                         {
                             data = pr.Register();
-                            if (data[0] is string && (string)data[0] == "exit")
+                            if (data[0] is string)
                             {
-                                deistvie = "exit"; break;
+                                if ((string)data[0] == "exit")
+                                {
+                                    deistvie = "exit"; break;
+                                }
+                                if ((string)data[0] == "back")
+                                {
+                                    deistvie = pr.Back(cur_deistvie); break;
+                                }
                             }
-                            if(um.Register((string)data[0], (string)data[1], (string)data[2])) {
+                            if (um.Register((string)data[0], (string)data[1], (string)data[2])) {
                                 pr.RegisterComplete();
                                 deistvie = "login";
                             }

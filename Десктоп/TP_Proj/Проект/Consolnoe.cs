@@ -33,41 +33,60 @@ namespace Проект
         }
         public object[] Register()
         {
-            string login;
-            string mail;
-            string pass;
-            string pass2;
-            do
-            {
-                Console.Write("Введите логин: ");
-                login = Console.ReadLine();
-            } while (login.Length < 1);
-            
-            do
-            {
-                Console.Write("Введите почту: ");
-                mail = Console.ReadLine();
-            } while (mail.Length < 1);
-
-            
-            for (; ; )
-            {
-                do
+            string login=null;
+            string mail =null;
+            string pass =null;
+            string pass2=null;
+            int step = 0;
+            while (true) {
+                switch (step)
                 {
-                    Console.Write("Введите пароль: ");
-                    pass = Console.ReadLine();
+                    case 0:
+                        {
+                            do
+                            {
+                                Console.Write("Введите логин: ");
+                                login = Console.ReadLine();
+                            } while (login.Length < 1);
+                            if (login == "back") { return new object[] {"back" }; }
+                            goto case 1;
+                        }
+                    case 1:
+                        {
+                            do
+                            {
+                                Console.Write("Введите почту: ");
+                                mail = Console.ReadLine();
+                            } while (mail.Length < 1);
+                            if (mail == "back") { goto case 0; }
+                            goto case 2;
+                        }
+                    case 2:
+                        {
+                            for (; ; )
+                            {
+                                do
+                                {
+                                    Console.Write("Введите пароль: ");
+                                    pass = Console.ReadLine();
+                                }
+                                while (pass.Length < 1);
+                                if (pass == "back") { goto case 1; }
+
+                                do
+                                {
+                                    Console.Write("Введите пароль ещё раз: ");
+                                    pass2 = Console.ReadLine();
+                                } while (pass2.Length < 1);
+                                if (pass2 == "back") { goto case 2; }
+                                if (pass != pass2) { Console.WriteLine("Пароли не совпадают, попробуйте ещё раз "); continue; }
+                                break;
+                            }
+                            break;
+                        }
                 }
-                while (pass.Length < 1);
-
-
-                do
-                {
-                    Console.Write("Введите пароль ещё раз: ");
-                    pass2 = Console.ReadLine();
-                } while (pass2.Length < 1);
-                if (pass != pass2) { Console.WriteLine("Пароли не совпадают, попробуйте ещё раз "); continue; }
                 break;
-            }
+                }
 
             return new object[] { login, mail, pass };
         }

@@ -79,6 +79,7 @@ namespace Проект
 
         private void label4_Click(object sender, EventArgs e)
         {
+            program.GetData(new object[] { "exit" });
             Application.Exit();
         }
 

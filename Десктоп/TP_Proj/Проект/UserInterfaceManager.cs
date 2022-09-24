@@ -18,7 +18,9 @@ namespace Проект
         void Start()
         {
             pr.Hello();
+            pr.Vhod();
             string deistvie = pr.GetDeistvie();
+            string cur_deistvie = "vhod";
             object[] data;
             while (deistvie != "exit")
             {
@@ -27,7 +29,10 @@ namespace Проект
                     case "login":
                         {
                             data=pr.Login();
-                            
+                            if (data[0] is string && (string)data[0] == "exit")
+                            {
+                                deistvie = "exit"; break;
+                            }
                             um.Login((string)data[0], (string) data[1]);
      
                             //проверяем через БД, вызываем WrongPass или LoginComplete
@@ -37,25 +42,37 @@ namespace Проект
                     case "register":
                         {
                             data = pr.Register();
-                            um.Register((string)data[0], (string)data[1], (string)data[2]);
+                            if (data[0] is string && (string)data[0] == "exit")
+                            {
+                                deistvie = "exit"; break;
+                            }
+                            if(um.Register((string)data[0], (string)data[1], (string)data[2])) {
+                                pr.RegisterComplete();
+                                deistvie = "login";
+                            }
                             //отправляем данные в БД
-                            pr.RegisterComplete();
-                            deistvie = "login";
+                            
+                            break;
+                        }
+                    case "back":
+                        {                      
+                            deistvie = pr.Back(cur_deistvie);
+                            cur_deistvie = deistvie;
                             break;
                         }
                     default:
                         {
                             deistvie=pr.GetDeistvie();
+                            cur_deistvie = deistvie;
                             break;
                         }
                 }
             }
-            
-
-        }
-        public static implicit operator UserInterfaceManager(Program v)
-        {
-            throw new NotImplementedException();
-        }
+            pr.Exit();
+        }      
+        //public static implicit operator UserInterfaceManager(Program v)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

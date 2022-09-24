@@ -60,6 +60,8 @@ namespace Проект
             Thread t = new Thread(() => Application.Run(new Privetstvie(this)));
             t.Start();
         }
+        public void Vhod() { }
+
         public object[] Login()
         {
             forms.Insert(0, new Form3(this));
@@ -93,6 +95,7 @@ namespace Проект
             (forms[0] as Form4).RegisterComplete();
             //Console.WriteLine("Вы успешно зарегистрировались");
         }
+        public void Exit() { }
     }
 
 }

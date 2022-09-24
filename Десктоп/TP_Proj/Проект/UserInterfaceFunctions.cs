@@ -13,5 +13,16 @@ namespace Проект
         object[] Register();
         string GetDeistvie();
         void RegisterComplete();
+        void Vhod();
+        string Back(string deistvie)
+        {
+            switch (deistvie)
+            {
+                case "login": return "vhod";
+                case "register": return "vhod";
+                default: return ""; 
+            }
+        }
+        void Exit();
     }
 }

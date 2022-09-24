@@ -37,6 +37,7 @@ namespace Проект
 
         private void label6_Click(object sender, EventArgs e)
         {
+            program.GetData(new object[] {"exit" });
             Application.Exit();
         }
     }

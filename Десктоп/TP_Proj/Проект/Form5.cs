@@ -12,13 +12,16 @@ namespace Проект
 {
     public partial class Form5 : Form
     {
-        public Form5()
+        Program program;
+        internal Form5(Program program)
         {
             InitializeComponent();
+            this.program = program;
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
+            program.GetData(new object[] { "exit" });
             Application.Exit();
         }
 

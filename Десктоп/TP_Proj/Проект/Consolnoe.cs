@@ -8,6 +8,7 @@ namespace Проект
 {
     internal class Consolnoe : UserInterfaceFunctions
     {
+        string cur_deistvie = "hello";
         public void Hello()
         {
             Console.WriteLine("Вы запустили...");
@@ -33,20 +34,22 @@ namespace Проект
         public object[] Register()
         {
             string login;
+            string mail;
+            string pass;
+            string pass2;
             do
             {
                 Console.Write("Введите логин: ");
                 login = Console.ReadLine();
             } while (login.Length < 1);
-            string mail;
+            
             do
             {
                 Console.Write("Введите почту: ");
                 mail = Console.ReadLine();
             } while (mail.Length < 1);
 
-            string pass;
-            string pass2;
+            
             for (; ; )
             {
                 do
@@ -68,21 +71,40 @@ namespace Проект
 
             return new object[] { login, mail, pass };
         }
+        public void Vhod()
+        {
+            cur_deistvie = "vhod";
+            Console.Write("Для входа в профиль введите \"1\", для регистрации — \"2\", для выхода — \"exit\"\nПереход к ");
+        }
         public string GetDeistvie()
         {
-            //для первого экрана:
-            Console.Write("Для входа в профиль введите \"1\", для регистрации — \"2\"\nПереход к ");
-            switch (Console.ReadLine())
+            switch (cur_deistvie)
             {
-                case "1": { return "login"; }
-                case "2": { return "register"; }
-                default: { return null; }
+                case "vhod":
+                    {
+                        for (; ; )
+                        {
+                            switch (Console.ReadLine())
+                            {
+
+                                case "1": { return "login"; }
+                                case "2": { return "register"; }
+                                case "exit": { return "exit"; }
+                                default: { Vhod(); break; }
+                            }
+                        }
+                    }
+                default: return "vhod";
             }
-            //при появлении других нужно будет переписать по-другому, это вам не формы
         }
         public void RegisterComplete()
         {
             Console.WriteLine("Вы успешно зарегистрировались");
+        }
+        public void Exit()
+        {
+            Console.WriteLine("До свидания. Для выхода нажмите любую клавишу");
+            Console.ReadKey();
         }
     }
 }

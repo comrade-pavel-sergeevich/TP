@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Newtonsoft.Json;
 
 namespace Проект
 {
-    struct UserInf
+    public struct UserInf
     {
-        public string name;
-        public string dop_info;
+        [JsonProperty("name")]
+        public string name { get; set; }
+        [JsonProperty("mail")]
+        public string mail { get; set; }
+        [JsonProperty("pass")]
+        public string pass { get; set; }
     }
 }

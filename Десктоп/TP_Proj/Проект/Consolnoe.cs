@@ -13,6 +13,27 @@ namespace Проект
         {
             Console.WriteLine("Вы запустили...");
         }
+        public object[] ChosingDB()
+        {
+            object? a;
+            do
+            {
+                Console.WriteLine("Для дальнейшей работы нужно указать расположение базы данных");
+                Console.Write("Для выбора удалённой БД \"1\"\nДля выбора локальной БД введите \"2\": ");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                        {                
+                            return new object[] { new DB() };
+                        }
+                    case "2":
+                        {
+                            return new object[] { new JSON() };
+                        }
+                }
+            } while (true);
+        }
         public object[] Login()
         {
             cur_deistvie = "login";
@@ -128,6 +149,10 @@ namespace Проект
         public void RegisterComplete()
         {
             Console.WriteLine("Вы успешно зарегистрировались");
+        }
+        public void LoginComplete()
+        {
+            Console.WriteLine("Вы вошли в аккаунт");
         }
         public void Exit()
         {

@@ -9,12 +9,12 @@ namespace Проект
 {
     internal class DB: InterfaceDB
     {
-        static string connStr = "Server=127.0.0.1; UserId=root; Database=тп; Port=3306;";   //подключение
+        static string connStr = "Server=127.0.0.1; UserId=admin; Password=1234; Database=TP; Port=3306;";   //подключение
         static MySqlConnection conn = new MySqlConnection(connStr);
 
         public bool createUser(string login, string mail, string pass)
         {
-            string add_sql = $"INSERT INTO people (name, mail, password ) VALUES ('{login}', '{mail}', '{pass}')"; //добавление
+            string add_sql = $"INSERT INTO users (name, mail, password ) VALUES ('{login}', '{mail}', '{pass}')"; //добавление
 
             if (checkUser(login))   // если такой уже есть - выходим 
             {
@@ -24,6 +24,7 @@ namespace Проект
             {
                 conn.Open();
                 MySqlCommand command_add = new MySqlCommand(add_sql, conn);
+                command_add.ExecuteScalar();
                 conn.Close();
 
                 return true;
@@ -32,7 +33,7 @@ namespace Проект
 
         public bool deleteUser(string login)
         {
-            string sql_delete = $"DELETE FROM people WHERE name = \"{login}\"";
+            string sql_delete = $"DELETE FROM users WHERE name = \"{login}\"";
 
             if (checkUser(login))  //если есть - удаляем
             {
@@ -50,7 +51,7 @@ namespace Проект
 
         public bool checkUser(string login)
         {
-            string sql_check = $"SELECT name FROM people WHERE name = \"{login}\"";  // проверка на то, что юзер существует
+            string sql_check = $"SELECT name FROM users WHERE name = \"{login}\"";  // проверка на то, что юзер существует
 
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql_check, conn);
@@ -70,7 +71,7 @@ namespace Проект
 
         public string GetPass(string login)
         {
-            string sql_pass = $"SELECT password FROM people WHERE name = \"{login}\"";
+            string sql_pass = $"SELECT password FROM users WHERE name = \"{login}\"";
 
             if (checkUser(login))
             {
@@ -90,8 +91,8 @@ namespace Проект
         {
             UserInf[] userData = new UserInf[3];
 
-            string sql_data = $"SELECT name FROM people";
-            string sql_count = $"SELECT COUNT(*) FROM people";
+            string sql_data = $"SELECT name FROM users";
+            string sql_count = $"SELECT COUNT(*) FROM users";
 
             conn.Open();
 

@@ -56,11 +56,20 @@ namespace Проект
         }
         public void Hello()
         {
-            ApplicationConfiguration.Initialize();
+
             //Thread t = new Thread(() => Application.Run(new Hello(this)));
             //t.Start();
-            Application.Run(new Hello());
-            ;
+            Application.Run(new Hello());      
+        }
+        public object[] ChosingDB()
+        {
+            ApplicationConfiguration.Initialize();
+            forms.Insert(0, new ChoosingDB(this));
+            Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
+            t.Start();
+            bufer = null;
+            while (bufer == null) Thread.Sleep(100);
+            return bufer;
         }
         public void Vhod() {
             forms.Insert(0, new Vhod(this));
@@ -70,6 +79,7 @@ namespace Проект
 
         public object[] Login()
         {
+            while (forms.Count() > 0) Thread.Sleep(10);
             forms.Insert(0, new Login(this));
             Thread t = new Thread(() => { Application.Run(forms[0]);forms.RemoveAt(0); }) ;
             t.Start();
@@ -79,6 +89,7 @@ namespace Проект
         }
         public object[] Register()
         {
+            while (forms.Count() > 0) Thread.Sleep(10);
             forms.Insert(0, new Register(this));
             Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
             t.Start();
@@ -100,6 +111,14 @@ namespace Проект
         {
             (forms[0] as Register).RegisterComplete();
             //Console.WriteLine("Вы успешно зарегистрировались");
+        }
+        public void LoginComplete()
+        {
+            (forms[0] as Login).LoginComplete();
+            while (forms.Count() > 0) Thread.Sleep(10);
+            forms.Insert(0, new Form5(this));
+            Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
+            t.Start();
         }
         public void Exit() { }
     }

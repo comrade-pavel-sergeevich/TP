@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Проект
 {
-    internal class Json : InterfaceDB
+    internal class JSON : InterfaceDB
     {
 
         public bool createUser(string login, string mail, string pass)
@@ -78,11 +78,11 @@ namespace Проект
             return "Да";
         }
 
-        public UserInf getAllUsers()
+        public UserInf[] getAllUsers()
         {
-            UserInf userData = new();
+            UserInf[] userInf = new UserInf[0];
 
-            return userData;
+            return userInf;
         }
     }
 }

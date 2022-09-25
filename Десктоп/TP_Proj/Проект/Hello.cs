@@ -13,5 +13,10 @@ namespace Проект
         {
             Close();
         }
+
+        private void Hello_Load(object sender, EventArgs e)
+        {
+            Activate();
+        }
     }
 }

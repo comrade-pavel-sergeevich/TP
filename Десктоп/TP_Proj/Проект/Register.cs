@@ -12,7 +12,7 @@ namespace Проект
 {
     public partial class Register : Form
     {
-        Connect conn = new Connect();
+        //Connect conn = new Connect();
         Program program;
         internal Register(Program program)
         {
@@ -46,7 +46,6 @@ namespace Проект
                 textBox1.ForeColor = Color.Black;
             }
         }
-
         private void textBox1_Leave(object sender, EventArgs e)
         {
             if (textBox1.Text == "")
@@ -55,7 +54,6 @@ namespace Проект
                 textBox1.ForeColor = Color.Orange;
             }
         }
-
         private void textBox2_Enter(object sender, EventArgs e)
         {
             if (textBox2.Text == "Почта")
@@ -64,7 +62,6 @@ namespace Проект
                 textBox2.ForeColor = Color.Black;
             }
         }
-
         private void textBox2_Leave(object sender, EventArgs e)
         {
             if (textBox2.Text == "")
@@ -109,13 +106,11 @@ namespace Проект
                 textBox4.UseSystemPasswordChar = false;
             }
         }
-
         private void label6_Click(object sender, EventArgs e)
         {
             program.GetData(new object[] { "exit" });
             Application.Exit();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox3.Text != textBox4.Text) { MessageBox.Show("different passwords"); return; }
@@ -139,6 +134,7 @@ namespace Проект
         }
         public void RegisterComplete()
         {
+            MessageBox.Show("Вы успешно зарегистрировались");
             Application.Exit();
         }
     }

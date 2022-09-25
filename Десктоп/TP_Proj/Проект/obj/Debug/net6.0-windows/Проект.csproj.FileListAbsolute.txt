@@ -62,3 +62,5 @@ D:\works\Проект\Десктоп\TP_Proj\Проект\bin\Debug\net6.0-windo
 D:\works\Проект\Десктоп\TP_Proj\Проект\obj\Debug\net6.0-windows\Проект.csproj.CopyComplete
 D:\works\Проект\Десктоп\TP_Proj\Проект\obj\Debug\net6.0-windows\Проект.genruntimeconfig.cache
 D:\works\Проект\Десктоп\TP_Proj\Проект\obj\Debug\net6.0-windows\ref\Проект.dll
+C:\xampp\htdocs\TP\Десктоп\TP_Proj\Проект\obj\Debug\net6.0-windows\Проект.ChoosingDB.resources
+C:\xampp\htdocs\TP\Десктоп\TP_Proj\Проект\bin\Debug\net6.0-windows\Newtonsoft.Json.dll

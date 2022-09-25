@@ -13,7 +13,7 @@ namespace Проект
     public partial class Login : Form
     {
         Program program;
-        Connect conn = new Connect();
+        //Connect conn = new Connect();
         internal Login(Program program)
         {
             this.program = program;
@@ -75,6 +75,7 @@ namespace Проект
 
         private void label6_Click(object sender, EventArgs e)
         {
+            program.GetData(new object[] { "exit" });
             Application.Exit();
         }
 
@@ -102,7 +103,10 @@ namespace Проект
             textBox1.Clear();
             textBox2.Clear();
         }
-
+        internal void LoginComplete()
+        {
+            Application.Exit();
+        }
         private void Login_Load(object sender, EventArgs e)
         {
             textBox1.Focus();

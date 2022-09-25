@@ -13,6 +13,7 @@ namespace Проект
         object[] Register();
         string GetDeistvie();
         void RegisterComplete();
+        void LoginComplete();
         void Vhod();
         string Back(string deistvie)
         {
@@ -24,5 +25,6 @@ namespace Проект
             }
         }
         void Exit();
+        object[] ChosingDB();
     }
 }

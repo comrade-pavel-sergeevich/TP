@@ -9,10 +9,11 @@ namespace Проект
     internal class UserInterfaceManager
     {
         UserInterfaceFunctions pr;
-        UserManager um = new UserManager();
+        UserManager um;
         public UserInterfaceManager(UserInterfaceFunctions pr)
         {
             this.pr = pr;
+            um = new UserManager(ChosingDB()); 
             Start();
         }
         void Start()
@@ -40,8 +41,12 @@ namespace Проект
                                     deistvie = pr.Back(cur_deistvie); break;
                                 }
                             }
-                            Console.WriteLine("Отправлено для входа");
-                            um.Login((string)data[0], (string) data[1]);
+                            //Console.WriteLine("Отправлено для входа");
+                            var result = um.Login((string)data[0], (string) data[1]);
+                            if ((bool)result[0])
+                            {
+                                pr.LoginComplete();
+                            }
      
                             //проверяем через БД, вызываем WrongPass или LoginComplete
                             deistvie = pr.GetDeistvie();
@@ -62,7 +67,7 @@ namespace Проект
                                     deistvie = pr.Back(cur_deistvie); break;
                                 }
                             }
-                            if (um.Register((string)data[0], (string)data[1], (string)data[2])) {
+                            if ((bool)um.Register((string)data[0], (string)data[1], (string)data[2])[0]) {
                                 pr.RegisterComplete();
                                 deistvie = "login";
                             }
@@ -91,7 +96,16 @@ namespace Проект
                 }
             }
             pr.Exit();
-        }      
+        }
+        InterfaceDB ChosingDB()
+        {
+            object[] data = pr.ChosingDB();
+            if (data[0]is string&&(string)data[0] == "exit")
+            {
+                Environment.Exit(0);
+            }
+            return (InterfaceDB)data[0];
+        }
         //public static implicit operator UserInterfaceManager(Program v)
         //{
         //    throw new NotImplementedException();

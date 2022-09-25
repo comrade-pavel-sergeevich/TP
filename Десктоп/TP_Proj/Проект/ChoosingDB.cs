@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Проект
 {
-    public partial class Choosing_of__BD : Form
+    public partial class ChoosingDB : Form
     {
         Program program;
-        public Choosing_of__BD()
+        internal ChoosingDB(Program pr)
         {
+            program = pr;
             InitializeComponent();
         }
 
@@ -22,6 +23,18 @@ namespace Проект
         {
             program.GetData(new object[] { "exit" });
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            program.GetData(new object[] { new DB() });
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            program.GetData(new object[] { new JSON() });
+            Close();
         }
     }
 }

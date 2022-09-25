@@ -11,32 +11,47 @@ namespace Проект
     internal class UserManager
     {
         UserInf user = new UserInf();
-        //InterfaceDB bd = new InterfaceDB();
+        string error = "";
+       
+        InterfaceDB bd;
+        public UserManager(InterfaceDB bd)
+        {
+            this.bd = bd;
 
-       public bool Login(string login, string pass)
+        }
+
+        public object[] Login(string login, string pass)
        {
-            //string sql = $"SELECT name FROM users WHERE login = "+login;
-            /*if (bd.checkUser(login))
+            if (bd.checkUser(login))
             {
-                return true;
+                Object[] result = { (Object)true, (Object)error};
+                return result;
             }
-            else*/
-                return false;
+            else
+            {
+                Object[] result = { (Object)false, (Object)error };
+                return result;
+            }
+            
             
        }
 
-        public bool Register(string name, string login, string pass)
+        public object[] Register(string name, string login, string pass)
         {
-            //string sql = "INSERT INTO users (name,login,pass) VALUES ("+name+","+login+","+pass+");";
-            /*if (bd.createUser(name, login, pass))
+            if (bd.createUser(name, login, pass))
             {
                 user.name = name;
-                return true;
+                Object[] result = { (Object)true, (Object)error};
+                return result;
             }
-            else*/
-                return false;
+            else
+            {
+                Object[] result = { (Object)false, (Object)error };
+                return result;
+            }
 
-            
+
+
 
 
         }

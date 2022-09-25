@@ -879,19 +879,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sun\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\works\\Проект\\Десктоп\\TP_Proj\\Проект\\Проект.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\TP3\\Десктоп\\TP_Proj\\Проект\\Проект.csproj",
       "projectName": "Проект",
-      "projectPath": "D:\\works\\Проект\\Десктоп\\TP_Proj\\Проект\\Проект.csproj",
-      "packagesPath": "C:\\Users\\Sun\\.nuget\\packages\\",
-      "outputPath": "D:\\works\\Проект\\Десктоп\\TP_Proj\\Проект\\obj\\",
+      "projectPath": "C:\\Users\\User\\Source\\Repos\\TP3\\Десктоп\\TP_Proj\\Проект\\Проект.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Source\\Repos\\TP3\\Десктоп\\TP_Proj\\Проект\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

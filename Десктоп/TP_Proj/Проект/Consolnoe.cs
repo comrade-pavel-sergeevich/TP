@@ -11,7 +11,7 @@ namespace Проект
         string cur_deistvie = "hello";
         public void Hello()
         {
-            Console.WriteLine("Вы запустили...");
+            Console.WriteLine("Программа успешно запущена");
         }
         public object[] ChosingDB()
         {
@@ -49,6 +49,7 @@ namespace Проект
                 }
                 while (login.Length < 1);
                 if (login == "back") { return new object[] { "back" }; }
+                if (login == "exit") { return new object[] { "exit" }; }
                 do
                 {
                     Console.Write("Введите пароль: ");
@@ -56,6 +57,7 @@ namespace Проект
                 }
                 while (pass.Length < 1);
                 if (pass == "back") continue;
+                if (pass == "exit") { return new object[] { "exit" }; }
                 break;
             }
             return new object[] { login, pass };
@@ -81,6 +83,7 @@ namespace Проект
                                 login = Console.ReadLine();
                             } while (login.Length < 1);
                             if (login == "back") { return new object[] { "back" }; }
+                            if(login == "exit") { return new object[] { "exit" }; }
                             goto case 1;
                         }
                     case 1:
@@ -91,6 +94,7 @@ namespace Проект
                                 mail = Console.ReadLine();
                             } while (mail.Length < 1);
                             if (mail == "back") { goto case 0; }
+                            if (mail == "exit") { return new object[] { "exit" }; }
                             goto case 2;
                         }
                     case 2:
@@ -104,12 +108,14 @@ namespace Проект
                                 }
                                 while (pass.Length < 1);
                                 if (pass == "back") { goto case 1; }
+                                if (pass == "exit") { return new object[] { "exit" }; }
                                 do
                                 {
                                     Console.Write("Введите пароль ещё раз: ");
                                     pass2 = Console.ReadLine();
                                 } while (pass2.Length < 1);
                                 if (pass2 == "back") { goto case 2; }
+                                if (pass2 == "exit") { return new object[] { "exit" }; }
                                 if (pass != pass2) { Console.WriteLine("Пароли не совпадают, попробуйте ещё раз "); continue; }
                                 break;
                             }
@@ -161,7 +167,7 @@ namespace Проект
         }
         void WriteAboutBack()
         {
-            Console.WriteLine("Для отмены ввода или возрата в предыдущее меню введите\"back\"");
+            Console.WriteLine("Для отмены ввода или возрата в предыдущее меню введите \"back\"");
         }
     }
 }

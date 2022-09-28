@@ -18,19 +18,16 @@ namespace Проект
             program = pr;
             InitializeComponent();
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
             program.GetData(new object[] { "exit" });
             Application.Exit();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             program.GetData(new object[] { new DB() });
             Close();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             program.GetData(new object[] { new JSON() });

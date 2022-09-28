@@ -12,7 +12,6 @@ namespace Проект
 {
     public partial class Register : Form
     {
-        //Connect conn = new Connect();
         Program program;
         internal Register(Program program)
         {
@@ -114,23 +113,7 @@ namespace Проект
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox3.Text != textBox4.Text) { MessageBox.Show("different passwords"); return; }
-            //if (conn.Regist(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text))
-            //{
-            //    Form5 fr5 = new Form5();
-            //    fr5.Show();
-            //    Hide();
-
-            //    MessageBox.Show("registr successful");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("user already exists");
-            //}
-            program.GetData(new object[] { textBox1.Text, textBox2.Text, textBox3.Text });
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();            
+            program.GetData(new object[] { textBox1.Text, textBox2.Text, textBox3.Text });           
         }
         public void RegisterComplete()
         {

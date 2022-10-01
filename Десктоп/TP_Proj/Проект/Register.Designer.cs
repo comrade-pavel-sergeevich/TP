@@ -42,7 +42,6 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -80,7 +79,7 @@
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(505, 55);
-            this.textBox2.TabIndex = 1;
+            this.textBox2.TabIndex = 2;
             this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
             this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
@@ -90,7 +89,7 @@
             this.textBox3.Location = new System.Drawing.Point(296, 332);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(505, 57);
-            this.textBox3.TabIndex = 1;
+            this.textBox3.TabIndex = 3;
             this.textBox3.Enter += new System.EventHandler(this.textBox3_Enter);
             this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
@@ -100,7 +99,7 @@
             this.textBox4.Location = new System.Drawing.Point(296, 443);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(505, 57);
-            this.textBox4.TabIndex = 1;
+            this.textBox4.TabIndex = 4;
             this.textBox4.Enter += new System.EventHandler(this.textBox4_Enter);
             this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
             // 
@@ -111,7 +110,7 @@
             this.button1.Location = new System.Drawing.Point(818, 491);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 51);
-            this.button1.TabIndex = 3;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Подтвердить";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -123,7 +122,7 @@
             this.button2.Location = new System.Drawing.Point(11, 491);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 51);
-            this.button2.TabIndex = 3;
+            this.button2.TabIndex = 6;
             this.button2.Text = "Назад";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -229,6 +228,7 @@
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form4";
+            this.Load += new System.EventHandler(this.Register_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -257,6 +257,5 @@
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
         private Panel panel1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

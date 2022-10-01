@@ -109,7 +109,7 @@ namespace Проект
         }
         private void Login_Load(object sender, EventArgs e)
         {
-            textBox1.Focus();
+            this.ActiveControl = button2;
         }
     }
 }

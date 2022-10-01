@@ -120,5 +120,10 @@ namespace Проект
             MessageBox.Show("Вы успешно зарегистрировались");
             Application.Exit();
         }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = button2;
+        }
     }
 }

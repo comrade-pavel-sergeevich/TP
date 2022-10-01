@@ -10,7 +10,7 @@ namespace Проект
 {
     internal class JSON : InterfaceDB
     {
-
+        JsonObject user = new JsonObject();
         public bool createUser(string login, string mail, string pass)
         {
             if (checkUser(login))
@@ -19,20 +19,32 @@ namespace Проект
             }
             else
             {
-                var obj = new JsonObject()
+                //var obj = new JsonObject()
+                //{
+                //    UserInf = new UserInf[]
+                //{
+                //    new UserInf
+                //    {
+                //        name = login,
+                //        mail = mail,
+                //        pass = pass
+                //    }
+                //}
+                //};
+                //var UserJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+                //StreamWriter file = File.CreateText("Users.json");
+                //file.WriteLine(UserJson);
+                //file.Close();
+                //return true;
+                UserInf use = new UserInf
                 {
-                    UserInf = new UserInf[]
-                {
-                    new UserInf
-                    {
-                        name = login,
-                        mail = mail,
-                        pass = pass
-                    }
-                }
+                    name = login,
+                    mail = mail,
+                    pass = pass
                 };
-                var UserJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-                StreamWriter file = File.CreateText("Users.json");
+                user.UserInf.Add(use);
+                var UserJson = JsonConvert.SerializeObject(use, Formatting.Indented);
+                StreamWriter file = new StreamWriter("Users.json", true);
                 file.WriteLine(UserJson);
                 file.Close();
                 return true;

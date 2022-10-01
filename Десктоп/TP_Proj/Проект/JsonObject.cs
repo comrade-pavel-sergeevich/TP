@@ -10,6 +10,6 @@ namespace Проект
     public class JsonObject
     {
         [JsonProperty("User")]
-        public UserInf[] UserInf { get; set; }
+        public List<UserInf> UserInf { get; set; }
     }
 }

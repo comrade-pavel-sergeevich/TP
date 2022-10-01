@@ -7,16 +7,6 @@ namespace Проект
             InitializeComponent();
             timer1.Interval = 1000;
             timer1.Start();
-            bool fileExist = File.Exists("Users.json");
-            if (!fileExist)
-            {
-                File.Create("Users.json");
-                JsonObject user = new JsonObject()
-                {
-                    UserInf = new List<UserInf> { }
-                };
-            }
-            else { }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

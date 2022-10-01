@@ -4,10 +4,10 @@
     <Compile Update="ChoosingDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Hello.cs">
+    <Compile Update="Form5.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Vhod.cs">
+    <Compile Update="Hello.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Login.cs">
@@ -16,7 +16,7 @@
     <Compile Update="Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form5.cs">
+    <Compile Update="Vhod.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

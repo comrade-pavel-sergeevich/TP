@@ -36,6 +36,7 @@ namespace Проект
         }
         public object[] Login()
         {
+            Console.WriteLine("Вход в аккаунт:");
             cur_deistvie = "login";
             string login;
             string pass;
@@ -64,6 +65,7 @@ namespace Проект
         }
         public object[] Register()
         {
+            Console.WriteLine("Регистрация нового пользователя:");
             cur_deistvie = "register";
             string login = null;
             string mail = null;

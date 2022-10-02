@@ -1,16 +1,18 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+
     
 namespace Проект
 {
     internal class UserManager
     {
-        UserInf user = new UserInf();
+        User user = new User();
         string error = "";
        
         InterfaceDB bd;
@@ -22,39 +24,56 @@ namespace Проект
 
         public object[] Login(string login, string pass)
        {
-            if (bd.checkUser(login))
+            
+            string hashpass = bd.GetPass(login);
+            object[] result = new object[2];
+            if (hashpass != "")
             {
-                Object[] result = { (Object)true, (Object)error};
-                return result;
+                //bool IsValidPass = BCrypt.Net.BCrypt.Verify(pass, hashpass);
+                if (BCrypt.Net.BCrypt.Verify(pass, hashpass))
+                {
+                    result[0] = true;
+                    result[1] = error;
+                }
+                else
+                {
+                    error = "Неверный пароль";
+                    result[0] = false;
+                    result[1] = error;
+                }
+
             }
             else
             {
-                Object[] result = { (Object)false, (Object)error };
-                return result;
+                error = "Пользователь не найден";
+                result[0] = false;
+                result[1] = error;
             }
-            
-            
-       }
-
-        public object[] Register(string name, string login, string pass)
-        {
-            if (bd.createUser(name, login, pass))
-            {
-                user.name = name;
-                Object[] result = { (Object)true, (Object)error};
-                return result;
-            }
-            else
-            {
-                Object[] result = { (Object)false, (Object)error };
-                return result;
-            }
-
-
-
-
+            return result;
 
         }
+
+        public object[] Register(string login, string email, string pass)
+        {
+            string hashpass = BCrypt.Net.BCrypt.HashPassword(pass);
+            object[] result = new object[2];
+            if (bd.createUser(login, email, hashpass))
+            {
+                user.login = login;
+                result[0] = true;
+                result[1] = error;
+
+            }
+            else
+            {
+                error = "Пользователь не создан";
+                result[0] = false;
+                result[1] = error;
+
+            }
+            return result;
+        }
+
     }
     
 

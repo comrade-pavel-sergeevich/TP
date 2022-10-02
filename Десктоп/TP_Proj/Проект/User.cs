@@ -8,10 +8,10 @@ using Newtonsoft.Json;
 
 namespace Проект
 {
-    public struct UserInf
+    struct User
     {
-        [JsonProperty("name")]
-        public string name { get; set; }
+        [JsonProperty("login")]
+        public string login { get; set; }
         [JsonProperty("mail")]
         public string mail { get; set; }
         [JsonProperty("pass")]

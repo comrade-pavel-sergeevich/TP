@@ -87,9 +87,9 @@ namespace Проект
             return "";
         }
 
-        public UserInf[] getAllUsers()
+        public User[] getAllUsers()
         {
-            UserInf[] userData = new UserInf[3];
+            User[] userData = new User[3];
 
             string sql_data = $"SELECT name FROM users";
             string sql_count = $"SELECT COUNT(*) FROM users";
@@ -106,7 +106,7 @@ namespace Проект
 
             for(int i=0; i<Convert.ToInt32(count); i++)
             {
-                userData[i].name = reader.GetName(0);
+                userData[i].login = reader.GetName(0);
                 userData[i].mail = reader.GetName(1);
                 userData[i].pass = reader.GetName(2);
             }

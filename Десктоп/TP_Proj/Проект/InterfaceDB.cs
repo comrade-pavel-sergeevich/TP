@@ -14,7 +14,7 @@ namespace Проект
 
         bool checkUser(string login);
 
-        UserInf[] getAllUsers();         
+        User[] getAllUsers();         
 
         string GetPass(string login);  // ищем пользователя с заданным логином. Если нашли - вернули пароль
 

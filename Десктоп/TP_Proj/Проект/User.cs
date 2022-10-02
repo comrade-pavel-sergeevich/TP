@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Проект
 {
-    struct User
+    public struct User
     {
         [JsonProperty("login")]
         public string login { get; set; }

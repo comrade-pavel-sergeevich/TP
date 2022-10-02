@@ -6,77 +6,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-
-    
 namespace Проект
 {
     internal class UserManager
     {
         User user = new User();
-        string error = "";
-       
         InterfaceDB bd;
         public UserManager(InterfaceDB bd)
         {
             this.bd = bd;
-
         }
-
         public object[] Login(string login, string pass)
-       {
-            
+        {
             string hashpass = bd.GetPass(login);
-            object[] result = new object[2];
+            object[] result = new object[] { false, null };
             if (hashpass != "")
             {
-                //bool IsValidPass = BCrypt.Net.BCrypt.Verify(pass, hashpass);
                 if (BCrypt.Net.BCrypt.Verify(pass, hashpass))
                 {
                     result[0] = true;
-                    result[1] = error;
+                    //result[1] = error;
+                    return result;
                 }
-                else
-                {
-                    error = "Неверный пароль";
-                    result[0] = false;
-                    result[1] = error;
-                }
-
+                //error = "Неверный пароль";
+                result[1] = "Неверный пароль";
+                return result;
             }
-            else
-            {
-                error = "Пользователь не найден";
-                result[0] = false;
-                result[1] = error;
-            }
+            //error = "Пользователь не найден";
+            result[1] = "Пользователь не найден";
             return result;
-
         }
-
         public object[] Register(string login, string email, string pass)
         {
             string hashpass = BCrypt.Net.BCrypt.HashPassword(pass);
-            object[] result = new object[2];
+            object[] result = new object[] { false, null };
             if (bd.createUser(login, email, hashpass))
             {
                 user.login = login;
                 result[0] = true;
-                result[1] = error;
+                return result;
 
             }
-            else
-            {
-                error = "Пользователь не создан";
-                result[0] = false;
-                result[1] = error;
-
-            }
+            //error = "Пользователь не создан";
+            result[1] = "Пользователь не создан";
             return result;
         }
-
     }
-    
-
-
-
 }

@@ -36,12 +36,13 @@ namespace Проект
                 //file.WriteLine(UserJson);
                 //file.Close();
                 //return true;
-                UserInf use = new UserInf
+                User use = new User
                 {
-                    name = login,
+                    login = login,
                     mail = mail,
                     pass = pass
                 };
+                
                 user.UserInf.Add(use);
                 var UserJson = JsonConvert.SerializeObject(use, Formatting.Indented);
                 StreamWriter file = new StreamWriter("Users.json", true);
@@ -90,9 +91,9 @@ namespace Проект
             return "Да";
         }
 
-        public UserInf[] getAllUsers()
+        public User[] getAllUsers()
         {
-            UserInf[] userInf = new UserInf[0];
+            User[] userInf = new User[0];
 
             return userInf;
         }

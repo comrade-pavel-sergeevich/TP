@@ -111,5 +111,9 @@ namespace Проект
         {
             this.ActiveControl = button2;
         }
+        internal void LoginError(string error)
+        {
+            MessageBox.Show("Ошибка авторизации:\n" + error);
+        }
     }
 }

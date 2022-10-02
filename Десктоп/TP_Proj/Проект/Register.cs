@@ -125,5 +125,9 @@ namespace Проект
         {
             this.ActiveControl = button2;
         }
+        internal void RegisterError(string error)
+        {
+            MessageBox.Show("Ошибка регистрации:\n" + error);
+        }
     }
 }

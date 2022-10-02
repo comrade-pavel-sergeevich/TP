@@ -11,14 +11,14 @@ namespace Проект
         string cur_deistvie = "hello";
         public void Hello()
         {
-            Console.WriteLine("Программа успешно запущена");
+            Console.WriteLine("\nПрограмма успешно запущена");
         }
         public object[] ChosingDB()
         {
             object? a;
             do
             {
-                Console.WriteLine("Для дальнейшей работы нужно указать расположение базы данных");
+                Console.WriteLine("\nДля дальнейшей работы нужно указать расположение базы данных");
                 Console.Write("Для выбора удалённой БД \"1\"\nДля выбора локальной БД введите \"2\": ");
                 a = Console.ReadLine();
                 switch (a)
@@ -36,7 +36,7 @@ namespace Проект
         }
         public object[] Login()
         {
-            Console.WriteLine("Вход в аккаунт:");
+            Console.WriteLine("\nВход в аккаунт:");
             cur_deistvie = "login";
             string login;
             string pass;
@@ -65,7 +65,7 @@ namespace Проект
         }
         public object[] Register()
         {
-            Console.WriteLine("Регистрация нового пользователя:");
+            Console.WriteLine("\nРегистрация нового пользователя:");
             cur_deistvie = "register";
             string login = null;
             string mail = null;
@@ -131,7 +131,7 @@ namespace Проект
         public void Vhod()
         {
             cur_deistvie = "vhod";
-            Console.Write("Для входа в профиль введите \"1\", для регистрации — \"2\", для выхода — \"exit\"\nПереход к ");
+            Console.Write("\nДля входа в профиль введите \"1\", для регистрации — \"2\", для выхода — \"exit\"\nПереход к ");
         }
         public string GetDeistvie()
         {
@@ -156,15 +156,23 @@ namespace Проект
         }
         public void RegisterComplete()
         {
-            Console.WriteLine("Вы успешно зарегистрировались");
+            Console.WriteLine("Вы успешно зарегистрировались\n");
+        }
+        public void RegisterError(string error)
+        {
+            Console.WriteLine("Ошибка регистрации:\n"+error+"\n");
+        }
+        public void LoginError(string error)
+        {
+            Console.WriteLine("\nОшибка авторизации:\n" + error+"\n");
         }
         public void LoginComplete()
         {
-            Console.WriteLine("Вы вошли в аккаунт");
+            Console.WriteLine("\nВы вошли в аккаунт\n");
         }
         public void Exit()
         {
-            Console.WriteLine("До свидания. Для выхода нажмите любую клавишу");
+            Console.WriteLine("\nДо свидания. Для выхода нажмите любую клавишу");
             Console.ReadKey();
         }
         void WriteAboutBack()

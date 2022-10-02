@@ -3,20 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace Проект
 {
-    internal class Program: UserInterfaceFunctions
+    internal class Program : UserInterfaceFunctions
     {
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
         const int SW_Min = 2;
         const int SW_Max = 3;
         const int SW_Norm = 4;
-        object[] bufer=null;
-        List<Form> forms=new List<Form>();
+        object[] bufer = null;
+        List<Form> forms = new List<Form>();
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        
+
         static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
@@ -42,7 +42,7 @@ namespace Проект
                             UserInterfaceManager um = new UserInterfaceManager(new Consolnoe());
                             return;
                         }
-                        case "2":
+                    case "2":
                         {
                             var handle = GetConsoleWindow();
                             ShowWindow(handle, SW_HIDE);
@@ -59,7 +59,7 @@ namespace Проект
 
             //Thread t = new Thread(() => Application.Run(new Hello(this)));
             //t.Start();
-            Application.Run(new Hello());      
+            Application.Run(new Hello());
         }
         public object[] ChosingDB()
         {
@@ -71,7 +71,8 @@ namespace Проект
             while (bufer == null) Thread.Sleep(100);
             return bufer;
         }
-        public void Vhod() {
+        public void Vhod()
+        {
             forms.Insert(0, new Vhod(this));
             Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
             t.Start();
@@ -79,20 +80,25 @@ namespace Проект
 
         public object[] Login()
         {
-            while (forms.Count() > 0) Thread.Sleep(10);
-            forms.Insert(0, new Login(this));
-            Thread t = new Thread(() => { Application.Run(forms[0]);forms.RemoveAt(0); }) ;
-            t.Start();
+            if (forms.Count() == 0 || (forms.Count() > 0 && !(forms[0] is Login)))
+            {
+                while (forms.Count() > 0) Thread.Sleep(10);
+                forms.Insert(0, new Login(this));
+                Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
+                t.Start();
+            }
             bufer = null;
             while (bufer == null) Thread.Sleep(100);
             return bufer;
         }
         public object[] Register()
         {
+            if (forms.Count()==0||(forms.Count() > 0 && !(forms[0] is Register))) { 
             while (forms.Count() > 0) Thread.Sleep(10);
             forms.Insert(0, new Register(this));
             Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
             t.Start();
+            }
             bufer = null;
             while (bufer == null) Thread.Sleep(100);
             return bufer;
@@ -119,6 +125,14 @@ namespace Проект
             forms.Insert(0, new Form5(this));
             Thread t = new Thread(() => { Application.Run(forms[0]); forms.RemoveAt(0); });
             t.Start();
+        }
+        public void LoginError(string error)
+        {
+            (forms[0] as Login).LoginError(error);
+        }
+        public void RegisterError(string error)
+        {
+            (forms[0] as Register).RegisterError(error);
         }
         public void Exit() { }
     }

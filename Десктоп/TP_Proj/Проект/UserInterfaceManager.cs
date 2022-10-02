@@ -13,12 +13,12 @@ namespace Проект
         public UserInterfaceManager(UserInterfaceFunctions pr)
         {
             this.pr = pr;
-            um = new UserManager(ChosingDB()); 
+            um = new UserManager(ChosingDB());
             Start();
         }
         void Start()
         {
-            pr.Hello();           
+            pr.Hello();
             string deistvie = "vhod";
             string cur_deistvie = "vhod";
             object[] data;
@@ -29,7 +29,7 @@ namespace Проект
                     case "login":
                         {
                             cur_deistvie = "login";
-                            data =pr.Login();
+                            data = pr.Login();
                             if (data[0] is string)
                             {
                                 if ((string)data[0] == "exit")
@@ -42,14 +42,16 @@ namespace Проект
                                 }
                             }
                             //Console.WriteLine("Отправлено для входа");
-                            var result = um.Login((string)data[0], (string) data[1]);
-                            if ((bool)result[0])
+                            var response = um.Login((string)data[0], (string)data[1]);
+                            if ((bool)response[0])
                             {
                                 pr.LoginComplete();
+                                deistvie = pr.GetDeistvie();
+                                break;
                             }
-     
+                            pr.LoginError((string)response[1]);
                             //проверяем через БД, вызываем WrongPass или LoginComplete
-                            deistvie = pr.GetDeistvie();
+                            
                             break;
                         }
                     case "register":
@@ -67,16 +69,18 @@ namespace Проект
                                     deistvie = pr.Back(cur_deistvie); break;
                                 }
                             }
-                            if ((bool)um.Register((string)data[0], (string)data[1], (string)data[2])[0]) {
+                            var response = um.Register((string)data[0], (string)data[1], (string)data[2]);
+                            if ((bool)response[0])
+                            {
                                 pr.RegisterComplete();
                                 deistvie = "login";
+                                break;
                             }
-                            //отправляем данные в БД
-                            
+                            pr.RegisterError((string)response[1]);
                             break;
                         }
                     case "back":
-                        {                      
+                        {
                             deistvie = pr.Back(cur_deistvie);
                             cur_deistvie = deistvie;
                             break;
@@ -89,7 +93,7 @@ namespace Проект
                         }
                     default:
                         {
-                            deistvie=pr.GetDeistvie();
+                            deistvie = pr.GetDeistvie();
                             cur_deistvie = deistvie;
                             break;
                         }
@@ -100,7 +104,7 @@ namespace Проект
         InterfaceDB ChosingDB()
         {
             object[] data = pr.ChosingDB();
-            if (data[0]is string&&(string)data[0] == "exit")
+            if (data[0] is string && (string)data[0] == "exit")
             {
                 Environment.Exit(0);
             }

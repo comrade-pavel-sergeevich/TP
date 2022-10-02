@@ -12,6 +12,8 @@ namespace Проект
         object[] Login();
         object[] Register();
         string GetDeistvie();
+        void RegisterError(string error);
+        void LoginError(string error);
         void RegisterComplete();
         void LoginComplete();
         void Vhod();

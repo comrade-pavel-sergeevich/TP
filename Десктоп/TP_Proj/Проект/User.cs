@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Проект
 {
-    public struct User
+    public class User
     {
         [JsonProperty("login")]
         public string login { get; set; }
@@ -16,5 +16,13 @@ namespace Проект
         public string mail { get; set; }
         [JsonProperty("pass")]
         public string pass { get; set; }
+        public User() { }
+
+        public User(string name, string mail, string pass)
+        {
+            this.login = name;
+            this.mail = mail;
+            this.pass = pass;
+        }
     }
 }

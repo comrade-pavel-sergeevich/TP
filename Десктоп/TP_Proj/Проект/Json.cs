@@ -11,6 +11,11 @@ namespace Проект
 {
     internal class JSON : InterfaceDB
     {
+        public JSON()
+        {
+            if (!File.Exists("Users.json"))
+                File.Create("Users.json");
+        }
         List<User> users = new List<User>();
         public bool createUser(string login, string mail, string pass)
         {

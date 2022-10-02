@@ -54,7 +54,7 @@ function logout(){
 	checkHash();
 }
 function login(){
-	let name=document.getElementById('email').value;
+	let name=document.getElementById('login').value;
 	let pwd = document.getElementById('pwd').value;
 	if(name==""|pwd==""){document.getElementById('error').innerHTML='<span style = "color:red">Заполните поля</span>';return;}
 	$.ajax({
@@ -73,6 +73,7 @@ function login(){
 	})
 }
 function register(){
+	let login=document.getElementById('login').value;
 	let email=document.getElementById('email').value;
 	let pwd = document.getElementById('pwd').value;
 	let pwdrepeat = document.getElementById('pwdrepeat').value;
@@ -86,7 +87,7 @@ function register(){
 	$.ajax({
 	type: 'Get',
 	url: 'includes/logincheck.inc.php',
-	data: {email: email},
+	data: {mail: email},
 	dataType: 'text'	
 	}).done(function(data){
 		if(data=='exist'){
@@ -95,7 +96,7 @@ function register(){
 		$.ajax({
 		type: 'Get',
 		url: 'includes/signupnew.inc.php',
-		data: {email: email, pwd: pwd},	
+		data: {login:login, email: email, pwd: pwd},	
 		})
 		window.location.hash="login";
 				checkHash();

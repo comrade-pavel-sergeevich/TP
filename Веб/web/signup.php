@@ -3,7 +3,8 @@
 <div name="error" id="error">
 
 </div>
-<input type="text" placeholder="Login" id="email"></input>
+<input type="text" placeholder="Login" id="login"></input>
+<input type="email" placeholder="Email" id="email"></input>
 <input type="password" placeholder="Password" id="pwd"></input>
 <input type="password" placeholder="Confirm password" id="pwdrepeat"></input>
 <input type="submit" name='submit' value="Зарегистрироваться" onclick="register();" />

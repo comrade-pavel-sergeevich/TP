@@ -25,14 +25,11 @@ namespace Проект
                 if (BCrypt.Net.BCrypt.Verify(pass, hashpass))
                 {
                     result[0] = true;
-                    //result[1] = error;
                     return result;
                 }
-                //error = "Неверный пароль";
                 result[1] = "Неверный пароль";
                 return result;
             }
-            //error = "Пользователь не найден";
             result[1] = "Пользователь не найден";
             return result;
         }
@@ -40,14 +37,18 @@ namespace Проект
         {
             string hashpass = BCrypt.Net.BCrypt.HashPassword(pass);
             object[] result = new object[] { false, null };
-            if (bd.createUser(login, email, hashpass))
+            if(bd.checkUser(login))
+            {
+                result[1] = "Пользователь с таким именем уже существует";
+                return result;
+            }
+            else if (bd.createUser(login, email, hashpass))
             {
                 user.login = login;
                 result[0] = true;
                 return result;
 
             }
-            //error = "Пользователь не создан";
             result[1] = "Пользователь не создан";
             return result;
         }

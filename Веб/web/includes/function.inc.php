@@ -11,7 +11,7 @@
 		return $result;
 	}
 	function existUser($pdo, $email){
-		$sql ="SELECT * FROM users WHERE login = ?;";
+		$sql ="SELECT * FROM users WHERE name = ?;";
 		$stmt = $pdo->prepare($sql);
 		$stmt -> execute([$email]);
 		
@@ -20,19 +20,19 @@
 
 		}
 	}
-	function createUser($pdo, $email, $pwd){
-		$sql="INSERT INTO users (login, pass) VALUES(?,?);";
+	function createUser($pdo, $name, $email, $pwd){
+		$sql="INSERT INTO users (name, mail, password) VALUES(?,?,?);";
 		try{
 			$stmt = $pdo->prepare($sql);
 			$hashPwd = password_hash($pwd, PASSWORD_DEFAULT);
-			$stmt -> execute([$email,$hashPwd]);
+			$stmt -> execute([$name,$email,$hashPwd]);
 		}
 		catch(PDOExpression $e){
 			exit();
 		}
 	}
 	function login($pdo, $email, $pwd){
-		$sql="SELECT pass FROM users WHERE login=?";
+		$sql="SELECT password FROM users WHERE name=?";
 		try{
 			$stmt = $pdo->prepare($sql);
 			$stmt -> execute([$email]);
@@ -44,7 +44,7 @@
 		}
 		try{
 		$row = $stmt->fetch(PDO::FETCH_LAZY);if($row!=null){
-		$hash = $row['pass'];
+		$hash = $row['password'];
 		return password_verify($pwd, $hash);}
 		}
 	catch(PDOExpression $e){}	return false;		
@@ -53,7 +53,7 @@
 	
 	
 	function getname($pdo,$email){
-		$sql="SELECT login FROM users WHERE login=?";
+		$sql="SELECT name FROM users WHERE name=?";
 		try{
 			$stmt = $pdo->prepare($sql);
 			$stmt -> execute([$email]);

@@ -50,7 +50,7 @@ namespace Проект
             {
                 textBox2.Text = "";
                 textBox2.ForeColor = Color.Black;
-                textBox2.UseSystemPasswordChar = true;
+                textBox2.PasswordChar = '●';
             }
         }
 
@@ -65,11 +65,13 @@ namespace Проект
 
         private void textBox2_Leave(object sender, EventArgs e)
         {
+            
             if (textBox2.Text == "")
             {
                 textBox2.Text = "Пароль";
                 textBox2.ForeColor = Color.Orange;
-                textBox2.UseSystemPasswordChar = false;
+                //textBox2.PasswordChar = '\0';
+                textBox2.PasswordChar = '\0';
             }
         }
 

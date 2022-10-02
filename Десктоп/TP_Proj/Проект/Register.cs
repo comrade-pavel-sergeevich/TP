@@ -75,7 +75,7 @@ namespace Проект
             {
                 textBox3.Text = "";
                 textBox3.ForeColor = Color.Black;
-                textBox3.UseSystemPasswordChar = true;
+                textBox3.PasswordChar = '●';
             }
         }
         private void textBox3_Leave(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace Проект
             {
                 textBox3.Text = "Пароль";
                 textBox3.ForeColor = Color.Orange;
-                textBox3.UseSystemPasswordChar = false;
+                textBox3.PasswordChar = '\0';
             }
         }
         private void textBox4_Enter(object sender, EventArgs e)
@@ -93,7 +93,7 @@ namespace Проект
             {
                 textBox4.Text = "";
                 textBox4.ForeColor = Color.Black;
-                textBox4.UseSystemPasswordChar = true;
+                textBox4.PasswordChar = '●';
             }
         }
         private void textBox4_Leave(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace Проект
             {
                 textBox4.Text = "Повторите пароль";
                 textBox4.ForeColor = Color.Orange;
-                textBox4.UseSystemPasswordChar = false;
+                textBox4.PasswordChar = '\0';
             }
         }
         private void label6_Click(object sender, EventArgs e)

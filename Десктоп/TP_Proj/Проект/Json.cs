@@ -137,7 +137,7 @@ namespace Проект
                 User us = serializer.Deserialize<User>(reader);
                 users.Add(us);
             }
-
+            //тут закрой reader
             for (int i = 0; i < users.Count - 1; i++)
                 if (users[i].login == login)
                 {

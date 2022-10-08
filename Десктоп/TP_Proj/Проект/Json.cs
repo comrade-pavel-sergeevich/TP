@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace Проект
 {
@@ -25,13 +26,13 @@ namespace Проект
             else
             {
                 User use = new User(login, mail, pass);
-                File.AppendAllText("Users.json", JsonConvert.SerializeObject(use));
+                File.AppendAllText("Users.json", JsonConvert.SerializeObject(use));     
                 return true;
             }
         }
         public bool deleteUser(string login)
         {
-            if (checkUser(login) == false)
+            if (!checkUser(login))
             {
                 return false;
             }
@@ -44,7 +45,6 @@ namespace Проект
 
         public bool checkUser(string login)
         {
-            bool ch_us = false;
             JsonTextReader reader = new JsonTextReader(new StreamReader("Users.json"));
             reader.SupportMultipleContent = true;
 
@@ -58,16 +58,13 @@ namespace Проект
                 User us = serializer.Deserialize<User>(reader);
                 if (us.login == login)
                 {
-                    ch_us = true;
+                    return true;
                     break;
+                    reader.Close();
                 }
             }
             reader.Close();
-            if(ch_us)
-            {
-                return true;
-            }
-            else { return false; }
+            return false;
         }
 
         public string GetPass(string login)
@@ -86,25 +83,39 @@ namespace Проект
                 {
                     return us.pass;
                     break;
+                    reader.Close ();
                 }
             }
             reader.Close();
-            //for (int i = 0; i < users.Count - 1; i++)
-            //{
-            //    if (users[i].login == login)
-            //    {
-            //        return users[i].pass;
-            //    }
-            //}
-            return " ";
+            return "";
         }
 
         public User[] getAllUsers()
         {
-            // Доделать!!!
-            User[] userInf = new User[0];
-
-            return userInf;
+            JsonTextReader reader = new JsonTextReader(new StreamReader("Users.json"));
+            reader.SupportMultipleContent = true;
+            int count = 0;
+            List<User> userss = new List<User>();
+            while (true)
+            {
+                if (!reader.Read())
+                {
+                    break;
+                }
+                JsonSerializer serializer = new JsonSerializer();
+                User us = serializer.Deserialize<User>(reader);
+                userss.Add(us);
+                count++;
+            }
+            User[] users = new User[count];
+            for (int i = 0; i < count; i++)
+            {
+                users[i] = new User();
+                users[i].login = userss[i].login;
+                users[i].mail = userss[i].mail;
+                users[i].pass = userss[i].pass;
+            }
+            return users;
         }
     }
 }

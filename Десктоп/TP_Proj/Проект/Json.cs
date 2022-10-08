@@ -152,7 +152,14 @@ namespace Проект
 
         public string GetPass(string login)
         {
-            return "Да";
+            for (int i = 0; i < users.Count - 1; i++)
+            {
+                if (users[i].login == login)
+                {
+                    return users[i].pass;
+                }
+            }
+            return " ";
         }
 
         public User[] getAllUsers()

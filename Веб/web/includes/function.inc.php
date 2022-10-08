@@ -24,7 +24,7 @@
 		$sql="INSERT INTO users (name, mail, password) VALUES(?,?,?);";
 		try{
 			$stmt = $pdo->prepare($sql);
-			$hashPwd = password_hash($pwd, PASSWORD_DEFAULT);
+			//$hashPwd = password_hash($pwd, PASSWORD_BCRYPT);
 			$stmt -> execute([$name,$email,$hashPwd]);
 		}
 		catch(PDOExpression $e){

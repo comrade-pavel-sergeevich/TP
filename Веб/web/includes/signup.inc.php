@@ -20,7 +20,7 @@
 			exit();
 		}
 		
-		$phash = password_hash($pwd, PASSWORD_DEFAULT);
+		$phash = password_hash($pwd, PASSWORD_BCRYPT);
 		createUser($pdo, $email, $phash);
 		header('location: ../index.php?reg_form=login');
 	}

@@ -11,13 +11,12 @@
 		return $result;
 	}
 	function existUser($pdo, $email){
-		$sql ="SELECT * FROM users WHERE name = ?;";
+		$sql ="SELECT * FROM users WHERE mail = ?;";
 		$stmt = $pdo->prepare($sql);
 		$stmt -> execute([$email]);
 		
 		if($stmt){
 			return($stmt->rowCount()===1);
-
 		}
 	}
 	function createUser($pdo, $name, $email, $pwd){
@@ -25,7 +24,7 @@
 		try{
 			$stmt = $pdo->prepare($sql);
 			//$hashPwd = password_hash($pwd, PASSWORD_BCRYPT);
-			$stmt -> execute([$name,$email,$hashPwd]);
+			$stmt -> execute([$name,$email,$pwd]);
 		}
 		catch(PDOExpression $e){
 			exit();

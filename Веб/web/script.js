@@ -8,7 +8,7 @@ const makeRequest = (url) => {
 	if(url=='do.php')deals();
 	window.location.hash=url.split('.')[0];
 })}
-
+const deals= ()=>{}
 const checkHash = () => {
 	let url = window.location.hash.slice(1);
 	$.ajax({
@@ -87,7 +87,7 @@ function register(){
 	$.ajax({
 	type: 'Get',
 	url: 'includes/logincheck.inc.php',
-	data: {mail: email},
+	data: {email: email},
 	dataType: 'text'	
 	}).done(function(data){
 		if(data=='exist'){

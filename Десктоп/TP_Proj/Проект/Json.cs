@@ -16,7 +16,7 @@ namespace Проект
             if (!File.Exists("Users.json"))
                 File.Create("Users.json");
         }
-        List<User> users = new List<User>();
+        //List<User> users = new List<User>(); убрать!!
         public bool createUser(string login, string mail, string pass)
         {
             if (checkUser(login))
@@ -127,6 +127,9 @@ namespace Проект
         {
             JsonTextReader reader = new JsonTextReader(new StreamReader("Users.json"));
             reader.SupportMultipleContent = true;
+
+            // не считывать весь массив!!!
+
             while (true)
             {
                 if (!reader.Read())
@@ -152,6 +155,9 @@ namespace Проект
 
         public string GetPass(string login)
         {
+
+            // искать в JSON!!!
+
             for (int i = 0; i < users.Count - 1; i++)
             {
                 if (users[i].login == login)
@@ -164,7 +170,7 @@ namespace Проект
 
         public User[] getAllUsers()
         {
-
+            // Доделать!!!
             User[] userInf = new User[0];
 
             return userInf;
